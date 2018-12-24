@@ -7,8 +7,8 @@
     <ProjectGuid>{998A4B63-9811-4D76-A5B0-832577165EB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>tekno_isnipe_1._5</RootNamespace>
-    <AssemblyName>tekno-isnipe-1.5</AssemblyName>
+    <RootNamespace>Apacrathon</RootNamespace>
+    <AssemblyName>Apacrathon.TeknoMW3.iSnipe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InfinityScript">
-      <HintPath>..\lib\InfinityScript\1.5\InfinityScript.dll</HintPath>
+    <Reference Include="InfinityScript, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\InfinityScript\1.1\InfinityScript.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
