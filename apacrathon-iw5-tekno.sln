@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSnipe", "tekno-isnipe-1.5\iSnipe.csproj", "{998A4B63-9811-4D76-A5B0-832577165EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSnipe", "iSnipe\iSnipe.csproj", "{998A4B63-9811-4D76-A5B0-832577165EB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
