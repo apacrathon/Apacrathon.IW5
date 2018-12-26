@@ -145,7 +145,7 @@ namespace Atlas
             if (ScriptConfiguration.LimitSemiAutoRateOfFire)
                 CL_AntiSniperSpam(player);
             if (ScriptConfiguration.DisableLightingEffects)
-                CL_ResetFilmTweaks(player);
+                CL_ResetLightingFogParticles(player);
             if (ScriptConfiguration.DisableFilmTweaks)
                 CL_ResetFilmTweaks(player);   
         }
