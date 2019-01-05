@@ -146,12 +146,6 @@ namespace Apacrathon
             if (ScriptConfiguration.DisableFilmTweaks)
                 CL_ResetFilmTweaks(player);   
         }
-
-        private static void CL_Perks(Entity player)
-        {
-
-        }
-
         private static void CL_AntiHardScope(Entity player)
         {
             if (ScriptConfiguration.DisableHardScope)
