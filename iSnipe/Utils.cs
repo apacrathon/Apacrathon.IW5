@@ -26,13 +26,13 @@ namespace Apacrathon
             }
         }
 
+        #region GSC
         public static Entity GetBombs(string name) =>
             GSCFunctions.GetEnt(name, "targetname");
 
         public static Entity GetBombTarget(Entity bomb) =>
             GSCFunctions.GetEnt(bomb.Target, "targetname");
         
-
         public static void DeleteBombCol()
         {
             Entity col = null;
@@ -41,9 +41,9 @@ namespace Apacrathon
                 Entity ent = Entity.GetEntity(i);
                 if (ent == null) continue;
 
-                if (ent.GetField<string>("classname") == "script_brushmodel")
+                if (ent.Classname == "script_brushmodel")
                 {
-                    if (ent.GetField<int>("spawnflags") == 1)
+                    if (ent.SpawnFlags == 1)
                     {
                         col = ent;
                         break;
@@ -54,7 +54,8 @@ namespace Apacrathon
         }
 
         public static void DeleteAllBombSites()
-        {        
+        {   
+            // @author: Slvr99
             if (GSCFunctions.GetDvar("g_gametype") != "sd") return;
 
             Entity bomb = GetBombs("bombzone");
@@ -92,5 +93,6 @@ namespace Apacrathon
             bSite_planting.Destroy();
             bSite_defusing.Destroy();
         }
+        #endregion
     }
 }
