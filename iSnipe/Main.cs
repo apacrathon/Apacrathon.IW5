@@ -122,7 +122,7 @@ namespace Apacrathon
         {
             // bomb sites
             if (ScriptConfiguration.DeleteBombSites)
-                AfterDelay(750, () => Utils.DeleteAllBombSites());
+                AfterDelay(1000, () => Utils.DeleteAllBombSites());
 
             // setup AntiKnife (SAT)
             antiKnife = new AntiKnife();
@@ -135,21 +135,23 @@ namespace Apacrathon
         }
         #endregion
 
-        #region CALLBACKS
         private void AtlasiSnipe_PlayerConnecting(Entity player)
         {
             if (ScriptConfiguration.DisableHardScope)
                 CL_AntiHardScope(player);
             if (ScriptConfiguration.LimitSemiAutoRateOfFire)
-                CL_AntiSniperSpam(player);
+                CL_ReduceRateOfFire(player);
             if (ScriptConfiguration.DisableLightingEffects)
                 CL_ResetLightingFogParticles(player);
             if (ScriptConfiguration.DisableFilmTweaks)
                 CL_ResetFilmTweaks(player);   
         }
-        #endregion
 
-        #region iSNIPE
+        private static void CL_Perks(Entity player)
+        {
+
+        }
+
         private static void CL_AntiHardScope(Entity player)
         {
             if (ScriptConfiguration.DisableHardScope)
@@ -188,7 +190,7 @@ namespace Apacrathon
             }
         }
 
-        private static void CL_AntiSniperSpam(Entity player)
+        private static void CL_ReduceRateOfFire(Entity player)
         {
             player.OnNotify("weapon_fired", (_player, weapon) => {
                 string currentWeapon = weapon.ToString();
@@ -236,19 +238,21 @@ namespace Apacrathon
 
             float attackerAds = attacker.PlayerAds();
 
-            // Use else-if to avoid restoring extra health
             if (ScriptConfiguration.DisableNoScope && attackerAds <= 0.1f && GSCFunctions.WeaponClass(weapon) == "sniper")
             {
                 attacker.IPrintLnBold(ScriptConfiguration.TryGetFeedbackMessage("noScope"));
                 player.Health += damage;
                 return;
             }
-            else if (ScriptConfiguration.DisableHalfScope && attackerAds < ScriptConfiguration.QuickScopeLimit)
+
+            if (ScriptConfiguration.DisableHalfScope && attackerAds < ScriptConfiguration.QuickScopeLimit)
             {
                 attacker.IPrintLnBold(ScriptConfiguration.TryGetFeedbackMessage("halfScope"));
                 player.Health += damage;
+                return;
             }
-            else if (ScriptConfiguration.DisableDropShot && attacker.GetStance() == "prone")
+
+            if (ScriptConfiguration.DisableDropShot && attacker.GetStance() == "prone")
             {
                 attacker.IPrintLnBold(ScriptConfiguration.TryGetFeedbackMessage("dropShot"));
                 player.Health += damage;
@@ -268,6 +272,5 @@ namespace Apacrathon
 
             return base.OnSay3(player, type, name, ref message);
         }
-        #endregion
     }
 }
